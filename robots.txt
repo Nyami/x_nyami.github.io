@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://﻿www.nyami.uk/sitemap.xml 
