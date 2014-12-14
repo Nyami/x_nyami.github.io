@@ -17,7 +17,7 @@ To get started we'll need a couple of things installed and [Chocolatey](https://
 * `choco install python`
 
 ## 2. Install Octopress
-Once everything is installed and the command prompt is restarted let get Octopress installed, configured and deployed.
+Once everything is installed and the command prompt is restarted lets get Octopress installed, configured and deployed.
 
 * `git init`
 * `git clone git://github.com/imathis/octopress.git nyami.github.io`
