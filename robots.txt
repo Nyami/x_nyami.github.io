@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://﻿www.nyami.uk/sitemap.xml 
+Sitemap: http://www.nyami.uk/sitemap.xml 
