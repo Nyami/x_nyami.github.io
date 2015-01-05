@@ -4,7 +4,7 @@
   <title><![CDATA[Nyami's Blog]]></title>
   <link href="http://www.nyami.uk/atom.xml" rel="self"/>
   <link href="http://www.nyami.uk/"/>
-  <updated>2015-01-05T10:25:08+00:00</updated>
+  <updated>2015-01-05T15:18:14+00:00</updated>
   <id>http://www.nyami.uk/</id>
   <author>
     <name><![CDATA[Douglas Cameron]]></name>
@@ -19,6 +19,9 @@
     <updated>2014-12-14T11:23:47+00:00</updated>
     <id>http://www.nyami.uk/blog/2014/12/14/a-blog-is-born</id>
     <content type="html"><![CDATA[<p>So I&rsquo;ve decided to start a blog, not for the first time, I&rsquo;ve had a few attempts on a couple of different platforms from a custom web app to <a href="http://umbraco.com/">Umbraco</a> and I&rsquo;ve probably got stuff on Geeks with Blogs and Blogger too. This time I&rsquo;m going for an Octopress and GitHub Pages combo and I know little of either! Thankfully both are fairly well documented and hopefully be able to learn a few things along the way.</p>
+
+<!--more-->
+
 
 <p>This first post will hopefully detail how to get started, <strong>[SPOILER ALERT]</strong> I guess if you are reading this then this has proven to be successful. I&rsquo;m using my trusty Surface Pro running Windows 10 Tech Preview so a good starting point looks to be <a href="http://thaiat.github.io/blog/2014/03/13/how-to-install-and-use-octopress-on-windows/">How to Install and Use Octopress on Windows</a> so let&rsquo;s see how this goes.</p>
 
