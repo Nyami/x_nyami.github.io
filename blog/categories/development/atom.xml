@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Development | Nyami's Blog]]></title>
+  <link href="http://www.nyami.uk/blog/categories/development/atom.xml" rel="self"/>
+  <link href="http://www.nyami.uk/"/>
+  <updated>2015-01-07T21:08:14+00:00</updated>
+  <id>http://www.nyami.uk/</id>
+  <author>
+    <name><![CDATA[Douglas Cameron]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[TFVC and NuGet Updates]]></title>
+    <link href="http://www.nyami.uk/blog/2015/01/07/tfvc-and-nuget-updates/"/>
+    <updated>2015-01-07T12:00:04+00:00</updated>
+    <id>http://www.nyami.uk/blog/2015/01/07/tfvc-and-nuget-updates</id>
+    <content type="html"><![CDATA[<p>At some point, for no obvious reason, I kept encountering an error when updating some NuGet packages, the error (TF14092) was basically telling me a file could not be modified as there was a pending delete. Experience has taught me that there is generally a reason for sudden changes in behaviour and after a little analysis I eventually worked it out.</p>
+
+<!--more-->
+
+
+<p>We currently use TFS2013 for version control, our main solution uses Visual Studio 2013 and we rely on a number of packages from <a href="http://www.nuget.org/">NuGet</a> as well as an internal repository for internal or licensed 3rd libraries. Historically this has not always been the case, we&rsquo;ve upgraded the solution through various versions of Visual Studio and TFS has also been upgraded from TFS2010, but the occurrence of this problem didn&rsquo;t appear to tie in with either upgrade. What I eventually worked out was that I had been using a server workspace long after the primary project had been upgraded, it wasn&rsquo;t until I was free of some of our older projects that I upgraded to a <a href="http://msdn.microsoft.com/en-us/library/bb892960.aspx">local workspace</a> that had actually introduced this behaviour.</p>
+
+<p>Once I realised the root cause the solution was simple, I created a new workspace on my PC but ensured it was a server workspace, opened the solution from this workspace and upgraded my NuGet packages, I could have alternatively changed the existing workspace from local to server but I think local workspaces work better for me.</p>
+
+<p>For future reference the full error is:
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1 error(s) encountered attempting to perform the add operation on 1 item(s) First error encountered:
+</span><span class='line'>TF14092: The item $/SOMEITEM cannot be changed. A parent of this item has a pending delete which must be checked in first.
+</span><span class='line'>See output tool window for information on any other errors.</span></code></pre></td></tr></table></div></figure></p>
+]]></content>
+  </entry>
+  
+</feed>
