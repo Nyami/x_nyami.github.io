@@ -6,7 +6,7 @@ comments: true
 categories: 
 ---
 So I've decided to start a blog, not for the first time, I've had a few attempts on a couple of different platforms from a custom web app to [Umbraco](http://umbraco.com/) and I've probably got stuff on Geeks with Blogs and Blogger too. This time I'm going for an Octopress and GitHub Pages combo and I know little of either! Thankfully both are fairly well documented and hopefully be able to learn a few things along the way.
-
+<!--more-->
 This first post will hopefully detail how to get started, **[SPOILER ALERT]** I guess if you are reading this then this has proven to be successful. I'm using my trusty Surface Pro running Windows 10 Tech Preview so a good starting point looks to be [How to Install and Use Octopress on Windows](http://thaiat.github.io/blog/2014/03/13/how-to-install-and-use-octopress-on-windows/) so let's see how this goes.
 ## 1. Getting the basics installed
 To get started we'll need a couple of things installed and [Chocolatey](https://chocolatey.org) is the best place to start this process! Once installed (or updated in my case) the following packages should be installed:
