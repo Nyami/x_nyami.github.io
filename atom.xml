@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Nyami's Blog]]></title>
+  <link href="http://www.nyami.uk/atom.xml" rel="self"/>
+  <link href="http://www.nyami.uk/"/>
+  <updated>2015-01-07T21:08:14+00:00</updated>
+  <id>http://www.nyami.uk/</id>
+  <author>
+    <name><![CDATA[Douglas Cameron]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[TFVC and NuGet Updates]]></title>
+    <link href="http://www.nyami.uk/blog/2015/01/07/tfvc-and-nuget-updates/"/>
+    <updated>2015-01-07T12:00:04+00:00</updated>
+    <id>http://www.nyami.uk/blog/2015/01/07/tfvc-and-nuget-updates</id>
+    <content type="html"><![CDATA[<p>At some point, for no obvious reason, I kept encountering an error when updating some NuGet packages, the error (TF14092) was basically telling me a file could not be modified as there was a pending delete. Experience has taught me that there is generally a reason for sudden changes in behaviour and after a little analysis I eventually worked it out.</p>
+
+<!--more-->
+
+
+<p>We currently use TFS2013 for version control, our main solution uses Visual Studio 2013 and we rely on a number of packages from <a href="http://www.nuget.org/">NuGet</a> as well as an internal repository for internal or licensed 3rd libraries. Historically this has not always been the case, we&rsquo;ve upgraded the solution through various versions of Visual Studio and TFS has also been upgraded from TFS2010, but the occurrence of this problem didn&rsquo;t appear to tie in with either upgrade. What I eventually worked out was that I had been using a server workspace long after the primary project had been upgraded, it wasn&rsquo;t until I was free of some of our older projects that I upgraded to a <a href="http://msdn.microsoft.com/en-us/library/bb892960.aspx">local workspace</a> that had actually introduced this behaviour.</p>
+
+<p>Once I realised the root cause the solution was simple, I created a new workspace on my PC but ensured it was a server workspace, opened the solution from this workspace and upgraded my NuGet packages, I could have alternatively changed the existing workspace from local to server but I think local workspaces work better for me.</p>
+
+<p>For future reference the full error is:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1 error(s) encountered attempting to perform the add operation on 1 item(s) First error encountered:
+</span><span class='line'>TF14092: The item $/SOMEITEM cannot be changed. A parent of this item has a pending delete which must be checked in first.
+</span><span class='line'>See output tool window for information on any other errors.</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Blog Is Born]]></title>
+    <link href="http://www.nyami.uk/blog/2014/12/14/a-blog-is-born/"/>
+    <updated>2014-12-14T11:23:47+00:00</updated>
+    <id>http://www.nyami.uk/blog/2014/12/14/a-blog-is-born</id>
+    <content type="html"><![CDATA[<p>So I&rsquo;ve decided to start a blog, not for the first time, I&rsquo;ve had a few attempts on a couple of different platforms from a custom web app to <a href="http://umbraco.com/">Umbraco</a> and I&rsquo;ve probably got stuff on Geeks with Blogs and Blogger too. This time I&rsquo;m going for an Octopress and GitHub Pages combo and I know little of either! Thankfully both are fairly well documented and hopefully be able to learn a few things along the way.</p>
+
+<!--more-->
+
+
+<p>This first post will hopefully detail how to get started, <strong>[SPOILER ALERT]</strong> I guess if you are reading this then this has proven to be successful. I&rsquo;m using my trusty Surface Pro running Windows 10 Tech Preview so a good starting point looks to be <a href="http://thaiat.github.io/blog/2014/03/13/how-to-install-and-use-octopress-on-windows/">How to Install and Use Octopress on Windows</a> so let&rsquo;s see how this goes.</p>
+
+<h2>1. Getting the basics installed</h2>
+
+<p>To get started we&rsquo;ll need a couple of things installed and <a href="https://chocolatey.org">Chocolatey</a> is the best place to start this process! Once installed (or updated in my case) the following packages should be installed:</p>
+
+<ul>
+<li><code>choco install git</code></li>
+<li><code>choco install ruby -version 1.9.3.54500</code></li>
+<li><code>choco install ruby.devkit</code></li>
+<li><code>choco install python</code></li>
+</ul>
+
+
+<h2>2. Install Octopress</h2>
+
+<p>Once everything is installed and the command prompt is restarted lets get Octopress installed, configured and deployed.</p>
+
+<ul>
+<li><code>git init</code></li>
+<li><code>git clone git://github.com/imathis/octopress.git nyami.github.io</code></li>
+<li><code>cd nyami.github.io</code></li>
+<li><code>gem install bundler</code></li>
+<li><code>bundle install</code></li>
+<li><code>rake install</code></li>
+<li><code>notepad .\_config.yml</code> and update properties and save</li>
+<li><code>echo www.nyami.uk &gt;&gt; source/CNAME</code></li>
+<li><code>rake new_post["A Blog Is Born"]</code></li>
+<li><code>rake generate</code></li>
+<li><code>rake preview</code></li>
+<li><code>rake setup_github_pages[https://github.com/Nyami/nyami.github.io.git]</code></li>
+</ul>
+
+
+<p>at this point I got the following error:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>## Set the codepage to 65001 for Windows machines
+</span><span class='line'>** Invoke setup_github_pages (first_time)
+</span><span class='line'>** Execute setup_github_pages
+</span><span class='line'>rake aborted!
+</span><span class='line'>ArgumentError: invalid byte sequence in UTF-8
+</span><span class='line'>C:/GitHub/nyami.github.io/Rakefile:393:in `strip'
+</span><span class='line'>C:/GitHub/nyami.github.io/Rakefile:393:in `blog_url'
+</span><span class='line'>C:/GitHub/nyami.github.io/Rakefile:344:in `block in &lt;top (required)>'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>using the command <code>chcp 65001</code> at this point didn&rsquo;t help so I had a quick peek at &ldquo;Rakefile&rdquo; not really knowing what it is but the problem looked to be around the CNAME file created above so I changed the encoding to ANSI and tried again and this time it was successful.</p>
+
+<p>Now I&rsquo;m going to try get this up on Github&hellip; lets see what happens&hellip;</p>
+
+<p><strong>Update</strong>
+So looks like everything worked using the following workflow:</p>
+
+<ul>
+<li><code>git add .</code></li>
+<li><code>git commit -m "first commit of Octopress blog"</code></li>
+<li><code>rake deploy</code></li>
+<li><code>git push origin source</code></li>
+</ul>
+
+
+<p>This was surprisingly easy, hopefully over the next few months I&rsquo;ll get some new posts up&hellip;</p>
+]]></content>
+  </entry>
+  
+</feed>
