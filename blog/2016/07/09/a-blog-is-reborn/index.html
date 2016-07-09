@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>A Blog Is Reborn - Nyami&#8217;s Blog</title>
+  <meta name="author" content="Douglas Cameron">
+
+  
+  <meta name="description" content="Ok, I started off with the best intention of blogging more regularly but 18 months between blog posts was not quite the cadence I was aiming for! &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.nyami.uk/blog/2016/07/09/a-blog-is-reborn">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Nyami's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-57354598-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Nyami&#8217;s Blog</a></h1>
+  
+    <h2>Something interesting for sure&#8230;</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.nyami.uk" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">A Blog Is Reborn</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-07-09T21:08:33+01:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:08 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://www.nyami.uk">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Ok, I started off with the best intention of blogging more regularly but 18 months between blog posts was not quite the cadence I was aiming for! Shortly after setting up the blog I rebuild my machine and completely failed in setting up Octopress, following my own steps in [&ldquo;A Blog Is Born&rdquo;] just wasn’t working, I was encountering more problems than I knew how to fix I think because most of the tools weren’t playing nicely with each other on Windows so I gave up in a huff until an easy solution came along.</p>
+
+<!--more-->
+
+
+<h2>Bash on Windows</h2>
+
+<p>This year at Build Microsoft announced the ability to run native Bash on Ubuntu on Windows! Apart the obvious advantages of being able to use cmatrix or cowsay I was at first a little indifferent about the announcement until I realised that this might actually mean I could get Octopress working on Windows, so if all goes to plan this will be my fool proof guide to setting up Octopress using Bash in Windows 10.</p>
+
+<h3>Installing Bash</h3>
+
+<p>In order to run Bash on Windows you’ll need to be running the Windows 10 Anniversary Update (currently available to Insiders) and then you will need to:
+* Turn-on Developer Mode
+* Enable the &ldquo;Windows Subsystem for Linux (beta)&rdquo; feature</p>
+
+<p>And that’s it, for more information and a more in-depth guide check out <a href="https://msdn.microsoft.com/en-us/commandline/wsl/about">https://msdn.microsoft.com/en-us/commandline/wsl/about</a></p>
+
+<h3>Install the basics</h3>
+
+<p>Once you are up and running with bash you’ll need to install the basic tools using apt-get, here’s the list that I used to get started:</p>
+
+<ul>
+<li>make</li>
+<li>rake</li>
+<li>nodejs</li>
+<li>git</li>
+<li>ruby1.9.1-dev</li>
+<li>bundler</li>
+</ul>
+
+
+<p>I then pulled down everything from Github and picked up the usual Octopress workflow, and if all goes to plan this should be live within the hour.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Douglas Cameron</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-07-09T21:08:33+01:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:08 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.nyami.uk/blog/2016/07/09/a-blog-is-reborn/" data-via="nyami" data-counturl="http://www.nyami.uk/blog/2016/07/09/a-blog-is-reborn/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/01/07/tfvc-and-nuget-updates/" title="Previous Post: TFVC and NuGet Updates">&laquo; TFVC and NuGet Updates</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/07/09/a-blog-is-reborn/">A Blog Is Reborn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/07/tfvc-and-nuget-updates/">TFVC and NuGet Updates</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/14/a-blog-is-born/">A Blog Is Born</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Douglas Cameron -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nyami';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.nyami.uk/blog/2016/07/09/a-blog-is-reborn/';
+        var disqus_url = 'http://www.nyami.uk/blog/2016/07/09/a-blog-is-reborn/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
