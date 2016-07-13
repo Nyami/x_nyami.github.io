@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>About - Nyami&#8217;s Blog</title>
+  <title>RadButton Single Click - Nyami&#8217;s Blog</title>
   <meta name="author" content="Douglas Cameron">
 
   
-  <meta name="description" content="About I started coding some time ago, although I’m not entirely sure copying code from commodore magazines fully qualifies as coding but it sparked &hellip;">
+  <meta name="description" content="A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the SingleClick property of the RadButton. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.nyami.uk/about">
+  <link rel="canonical" href="http://www.nyami.uk/blog/2016/07/13/radbutton-single-click">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Nyami's Blog" type="application/atom+xml">
@@ -77,19 +77,88 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">About</h1>
+    
+      <h1 class="entry-title">RadButton Single Click</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-07-13T21:55:47+01:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:55 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://www.nyami.uk">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <p>I started coding some time ago, although I’m not entirely sure copying code from commodore magazines fully qualifies as coding but it sparked something that ended up with a career in software development. Now primarily working with Microsoft technologies I started my profession career in 2001 after graduating from <a href="http://www.comp.rgu.ac.uk/">The Robert Gordon University</a> with a BSc (Hons) in Computing working with VB6 before moving to C# in 2002.</p>
 
-<p>These days I’m still primarily working with C# and my role as Technical Lead at <a href="http://www.businessport.net">BusinessPort</a> sees me working across a number of areas of our product lifecycle.</p>
 
+<div class="entry-content"><p>A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the <a href="http://demos.telerik.com/aspnet-ajax/button/examples/singleclick/defaultcs.aspx">SingleClick</a> property of the RadButton.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;telerik:RadButton runat="server" ID="btnSend" Text="Send" OnClick="btnSend_Click" SingleClick="true" SingleClickText="Sending...">
+</span><span class='line'>&lt;/telerik:RadButton></span></code></pre></td></tr></table></div></figure>
+
+
+<p>I&rsquo;ve no idea how I&rsquo;ve not encountered this RadButton setting before now, saves wiring up custom OnClientClick events&hellip;</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Douglas Cameron</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-07-13T21:55:47+01:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:55 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/asp-dot-net/'>asp.net</a>, <a class='category' href='/blog/categories/telerik/'>telerik</a>, <a class='category' href='/blog/categories/tips/'>tips</a>, <a class='category' href='/blog/categories/web/'>web</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.nyami.uk/blog/2016/07/13/radbutton-single-click/" data-via="nyami" data-counturl="http://www.nyami.uk/blog/2016/07/13/radbutton-single-click/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2016/07/09/a-blog-is-reborn/" title="Previous Post: A Blog Is Reborn">&laquo; A Blog Is Reborn</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -135,6 +204,22 @@
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'nyami';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.nyami.uk/blog/2016/07/13/radbutton-single-click/';
+        var disqus_url = 'http://www.nyami.uk/blog/2016/07/13/radbutton-single-click/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

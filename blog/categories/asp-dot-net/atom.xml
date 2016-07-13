@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: asp.net | Nyami's Blog]]></title>
+  <link href="http://www.nyami.uk/blog/categories/asp-dot-net/atom.xml" rel="self"/>
+  <link href="http://www.nyami.uk/"/>
+  <updated>2016-07-13T22:13:25+01:00</updated>
+  <id>http://www.nyami.uk/</id>
+  <author>
+    <name><![CDATA[Douglas Cameron]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[RadButton Single Click]]></title>
+    <link href="http://www.nyami.uk/blog/2016/07/13/radbutton-single-click/"/>
+    <updated>2016-07-13T21:55:47+01:00</updated>
+    <id>http://www.nyami.uk/blog/2016/07/13/radbutton-single-click</id>
+    <content type="html"><![CDATA[<p>A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the <a href="http://demos.telerik.com/aspnet-ajax/button/examples/singleclick/defaultcs.aspx">SingleClick</a> property of the RadButton.</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;telerik:RadButton runat=&ldquo;server&rdquo; ID=&ldquo;btnSend&rdquo; Text=&ldquo;Send&rdquo; OnClick=&ldquo;btnSend_Click&rdquo; SingleClick=&ldquo;true&rdquo; SingleClickText=&ldquo;Sending&hellip;&rdquo;>
+</span><span class='line'>&lt;/telerik:RadButton></span></code></pre></td></tr></table></div></figure></p>
+
+<p>I&rsquo;ve no idea how I&rsquo;ve not encountered this RadButton setting before now, saves wiring up custom OnClientClick events&hellip;</p>
+]]></content>
+  </entry>
+  
+</feed>

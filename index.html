@@ -9,7 +9,7 @@
   <meta name="author" content="Douglas Cameron">
 
   
-  <meta name="description" content="Ok, I started off with the best intention of blogging more regularly but 18 months between blog posts was not quite the cadence I was aiming for! &hellip;">
+  <meta name="description" content="A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the SingleClick property of the RadButton. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,46 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/07/13/radbutton-single-click/">RadButton Single Click</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-07-13T21:55:47+01:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:55 pm</span></time>
+        
+           | <a href="/blog/2016/07/13/radbutton-single-click/#disqus_thread"
+             data-disqus-identifier="http://www.nyami.uk/blog/2016/07/13/radbutton-single-click/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the <a href="http://demos.telerik.com/aspnet-ajax/button/examples/singleclick/defaultcs.aspx">SingleClick</a> property of the RadButton.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;telerik:RadButton runat="server" ID="btnSend" Text="Send" OnClick="btnSend_Click" SingleClick="true" SingleClickText="Sending...">
+</span><span class='line'>&lt;/telerik:RadButton></span></code></pre></td></tr></table></div></figure>
+
+
+<p>I&rsquo;ve no idea how I&rsquo;ve not encountered this RadButton setting before now, saves wiring up custom OnClientClick events&hellip;</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -201,6 +241,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/07/13/radbutton-single-click/">RadButton Single Click</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/07/09/a-blog-is-reborn/">A Blog Is Reborn</a>
