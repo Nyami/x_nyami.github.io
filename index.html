@@ -9,7 +9,7 @@
   <meta name="author" content="Douglas Cameron">
 
   
-  <meta name="description" content="A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the SingleClick property of the RadButton. &hellip;">
+  <meta name="description" content="If you’re new to running Bash on Windows like me chances are you’ll type some huge long command only to be presented with a nice message telling you &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,47 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/10/06/bash-i-forgot-sudo/">Bash - I Forgot Sudo</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-10-06T09:16:59+01:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:16 am</span></time>
+        
+           | <a href="/blog/2016/10/06/bash-i-forgot-sudo/#disqus_thread"
+             data-disqus-identifier="http://www.nyami.uk/blog/2016/10/06/bash-i-forgot-sudo/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you’re new to running Bash on Windows like me chances are you’ll type some huge long command only to be presented with a nice message telling you that permission was denied and then you realise you forgot “sudo”. Rather than typing the whole thing again prefixing with sudo this handy alias will save you a few keystrokes:</p>
+
+<ul>
+<li>Edit bashrc (vi .bashrc)</li>
+<li>Add the alias “ffs=&lsquo;sudo $(history -p !!)&#8217;”</li>
+<li>Restart/open bash console</li>
+</ul>
+
+
+<p>And in case you struggle with vi here is a handy <a href="http://www.lagmonster.org/docs/vi.html">cheat sheet</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -241,6 +282,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/10/06/bash-i-forgot-sudo/">Bash - I Forgot Sudo</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/07/13/radbutton-single-click/">RadButton Single Click</a>

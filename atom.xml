@@ -4,7 +4,7 @@
   <title><![CDATA[Nyami's Blog]]></title>
   <link href="http://www.nyami.uk/atom.xml" rel="self"/>
   <link href="http://www.nyami.uk/"/>
-  <updated>2016-07-13T22:13:25+01:00</updated>
+  <updated>2016-10-06T09:30:25+01:00</updated>
   <id>http://www.nyami.uk/</id>
   <author>
     <name><![CDATA[Douglas Cameron]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Bash - I Forgot Sudo]]></title>
+    <link href="http://www.nyami.uk/blog/2016/10/06/bash-i-forgot-sudo/"/>
+    <updated>2016-10-06T09:16:59+01:00</updated>
+    <id>http://www.nyami.uk/blog/2016/10/06/bash-i-forgot-sudo</id>
+    <content type="html"><![CDATA[<p>If you’re new to running Bash on Windows like me chances are you’ll type some huge long command only to be presented with a nice message telling you that permission was denied and then you realise you forgot “sudo”. Rather than typing the whole thing again prefixing with sudo this handy alias will save you a few keystrokes:</p>
+
+<ul>
+<li>Edit bashrc (vi .bashrc)</li>
+<li>Add the alias “ffs=&lsquo;sudo $(history -p !!)&#8217;”</li>
+<li>Restart/open bash console</li>
+</ul>
+
+
+<p>And in case you struggle with vi here is a handy <a href="http://www.lagmonster.org/docs/vi.html">cheat sheet</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RadButton Single Click]]></title>
