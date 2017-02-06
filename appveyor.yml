@@ -31,6 +31,7 @@ branches:
 install:
   - appveyor DownloadFile http://curl.haxx.se/ca/cacert.pem
   - SET SSL_CERT_FILE=%APPVEYOR_BUILD_FOLDER%\cacert.pem
+  - set PATH=C:\Ruby23\bin;%PATH%
 
 build_script:
   # - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:GithubPassword):x-oauth-basic@github.com`n"
