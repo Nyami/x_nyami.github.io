@@ -16,7 +16,7 @@ init:
 clone_folder: C:\projects\nyami-github-io
 
 # environment variables
-environment:
+# environment:
 
 # Branches to build
 branches:
