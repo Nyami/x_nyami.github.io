@@ -38,10 +38,10 @@ build_script:
   - cmd: gem install bundler
   - cmd: bundle install
   - cmd: if not exist _deploy (git clone https://github.com/nyami/nyami.github.io.git _deploy)
-  #- cmd: cd _deploy
-  #- cmd: git checkout master
-  #- cmd: cd ..
-  #- cmd: rake generate
+  - cmd: cd _deploy
+  - cmd: git checkout master
+  - cmd: cd ..
+  - cmd: rake generate
   #- cmd: rake deploy
 
 test: off
@@ -50,5 +50,3 @@ skip_commits:
   message: /Created.*\.(png|jpg|jpeg|bmp|gif)/
 
 cache:
-  - C:\Ruby23\lib\ruby\gems\2.2.0
-  - C:\Ruby23\bin
