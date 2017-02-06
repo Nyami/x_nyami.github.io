@@ -1,0 +1,53 @@
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+# version format
+version: 1.0.{build}
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+# scripts that are called at very beginning, before repo cloning
+init:
+
+# clone directory
+clone_folder: C:\projects\nyami-github-io
+
+# environment variables
+environment:
+
+# Branches to build
+branches:
+  # Whitelist
+  only:
+    - source
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+install:
+  - appveyor DownloadFile http://curl.haxx.se/ca/cacert.pem
+  - SET SSL_CERT_FILE=%APPVEYOR_BUILD_FOLDER%\cacert.pem
+
+build_script:
+  # - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:GithubPassword):x-oauth-basic@github.com`n"
+  - cmd: gem install bundler
+  - cmd: bundle install
+  - cmd: if not exist _deploy (git clone https://github.com/nyami/nyami.github.io.git _deploy)
+  #- cmd: cd _deploy
+  #- cmd: git checkout master
+  #- cmd: cd ..
+  #- cmd: rake generate
+  #- cmd: rake deploy
+
+test: off
+
+skip_commits:
+  message: /Created.*\.(png|jpg|jpeg|bmp|gif)/
+
+cache:
+  - C:\Ruby193\lib\ruby\gems\1.9.1
+  - C:\Ruby193\bin
