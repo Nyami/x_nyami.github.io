@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Tips | Nyami's Blog]]></title>
-  <link href="http://www.nyami.uk/blog/categories/tips/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Identity Provider | Nyami's Blog]]></title>
+  <link href="http://www.nyami.uk/blog/categories/identity-provider/atom.xml" rel="self"/>
   <link href="http://www.nyami.uk/"/>
   <updated>2017-11-18T19:02:53+00:00</updated>
   <id>http://www.nyami.uk/</id>
@@ -63,22 +63,6 @@
 </span><span class='line'>icacls $fullpath /grant $username`:RX;</span></code></pre></td></tr></table></div></figure></p>
 
 <p> In addition to creating the certificate it will also ensure the current user has read access to the private keys avoiding the need to run VS elevated when developing, this last part could obviously be extracted and reused for your application pool if running Identity Server in IIS.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[RadButton Single Click]]></title>
-    <link href="http://www.nyami.uk/blog/2016/07/13/radbutton-single-click/"/>
-    <updated>2016-07-13T20:55:47+00:00</updated>
-    <id>http://www.nyami.uk/blog/2016/07/13/radbutton-single-click</id>
-    <content type="html"><![CDATA[<p>A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the <a href="http://demos.telerik.com/aspnet-ajax/button/examples/singleclick/defaultcs.aspx">SingleClick</a> property of the RadButton.</p>
-
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;telerik:RadButton runat=&ldquo;server&rdquo; ID=&ldquo;btnSend&rdquo; Text=&ldquo;Send&rdquo; OnClick=&ldquo;btnSend_Click&rdquo; SingleClick=&ldquo;true&rdquo; SingleClickText=&ldquo;Sending&hellip;&rdquo;>
-</span><span class='line'>&lt;/telerik:RadButton></span></code></pre></td></tr></table></div></figure></p>
-
-<p>I&rsquo;ve no idea how I&rsquo;ve not encountered this RadButton setting before now, saves wiring up custom OnClientClick events&hellip;</p>
 ]]></content>
   </entry>
   

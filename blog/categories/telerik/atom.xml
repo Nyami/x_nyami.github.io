@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Telerik | Nyami's Blog]]></title>
   <link href="http://www.nyami.uk/blog/categories/telerik/atom.xml" rel="self"/>
   <link href="http://www.nyami.uk/"/>
-  <updated>2016-10-06T09:30:25+01:00</updated>
+  <updated>2017-11-18T19:02:53+00:00</updated>
   <id>http://www.nyami.uk/</id>
   <author>
     <name><![CDATA[Douglas Cameron]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[RadButton Single Click]]></title>
     <link href="http://www.nyami.uk/blog/2016/07/13/radbutton-single-click/"/>
-    <updated>2016-07-13T21:55:47+01:00</updated>
+    <updated>2016-07-13T20:55:47+00:00</updated>
     <id>http://www.nyami.uk/blog/2016/07/13/radbutton-single-click</id>
     <content type="html"><![CDATA[<p>A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the <a href="http://demos.telerik.com/aspnet-ajax/button/examples/singleclick/defaultcs.aspx">SingleClick</a> property of the RadButton.</p>
 

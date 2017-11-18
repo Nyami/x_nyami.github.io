@@ -4,7 +4,7 @@
   <title><![CDATA[Nyami's Blog]]></title>
   <link href="http://www.nyami.uk/atom.xml" rel="self"/>
   <link href="http://www.nyami.uk/"/>
-  <updated>2016-10-06T09:30:25+01:00</updated>
+  <updated>2017-11-18T19:02:53+00:00</updated>
   <id>http://www.nyami.uk/</id>
   <author>
     <name><![CDATA[Douglas Cameron]]></name>
@@ -14,9 +14,65 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Creating a Self-Signed Certificate for Identity Provider]]></title>
+    <link href="http://www.nyami.uk/blog/2017/11/18/creating-a-self-signed-certificate-for-identity-provider/"/>
+    <updated>2017-11-18T09:54:16+00:00</updated>
+    <id>http://www.nyami.uk/blog/2017/11/18/creating-a-self-signed-certificate-for-identity-provider</id>
+    <content type="html"><![CDATA[<p>I’d recently had to create a self-signed certificate for use in IdentityProvider4 and was coming up against problems when using the default options with New-SelfSignedCertificate PS module.</p>
+
+<p>Identity Server was throwing &ldquo;CryptographicException: Invalid provider type specified&rdquo; and I had ensured the user account had access so it should have been all good. After a little bit of digging it turned out the private keys were not accessible from .NET. David Christiansen’s <a href="http://blog.davidchristiansen.com/2016/05/521/">blog post</a> helped me track down the issue but with a little more research I ended up with the following PowerShell to create a working certificate avoiding additional steps I didnt understand ;).</p>
+
+<!--more-->
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$idSrvCertificate = New-SelfSignedCertificate `
+</span><span class='line'>    -Subject "CN=MyIdentityProviderCert" `
+</span><span class='line'>    -FriendlyName "Identity Server Token Signing" `
+</span><span class='line'>    -CertStoreLocation "cert:LocalMachine\My" `
+</span><span class='line'>    -KeyAlgorithm RSA `
+</span><span class='line'>    -KeySpec Signature `
+</span><span class='line'>    -KeyLength 2048 `
+</span><span class='line'>    -KeyUsage DigitalSignature, KeyEncipherment, DataEncipherment, CertSign `
+</span><span class='line'>    -NotBefore (Get-Date) `
+</span><span class='line'>    -NotAfter (Get-Date).AddYears(5);
+</span><span class='line'>
+</span><span class='line'>$username = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name;
+</span><span class='line'>
+</span><span class='line'>$keyname = (((Get-ChildItem cert:\LocalMachine\my | Where-Object {$_.thumbprint -like $idSrvCertificate.ThumbPrint}).PrivateKey).CspKeyContainerInfo).UniqueKeyContainerName;
+</span><span class='line'>
+</span><span class='line'>$keypath = $env:ProgramData + "\Microsoft\Crypto\RSA\MachineKeys\";
+</span><span class='line'>$fullpath = $keypath + $keyname;
+</span><span class='line'>icacls $fullpath /grant $username`:RX;</span></code></pre></td></tr></table></div></figure>
+
+
+<p> In addition to creating the certificate it will also ensure the current user has read access to the private keys avoiding the need to run VS elevated when developing, this last part could obviously be extracted and reused for your application pool if running Identity Server in IIS.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Bash - I Forgot Sudo]]></title>
     <link href="http://www.nyami.uk/blog/2016/10/06/bash-i-forgot-sudo/"/>
-    <updated>2016-10-06T09:16:59+01:00</updated>
+    <updated>2016-10-06T08:16:59+00:00</updated>
     <id>http://www.nyami.uk/blog/2016/10/06/bash-i-forgot-sudo</id>
     <content type="html"><![CDATA[<p>If you’re new to running Bash on Windows like me chances are you’ll type some huge long command only to be presented with a nice message telling you that permission was denied and then you realise you forgot “sudo”. Rather than typing the whole thing again prefixing with sudo this handy alias will save you a few keystrokes:</p>
 
@@ -34,7 +90,7 @@
   <entry>
     <title type="html"><![CDATA[RadButton Single Click]]></title>
     <link href="http://www.nyami.uk/blog/2016/07/13/radbutton-single-click/"/>
-    <updated>2016-07-13T21:55:47+01:00</updated>
+    <updated>2016-07-13T20:55:47+00:00</updated>
     <id>http://www.nyami.uk/blog/2016/07/13/radbutton-single-click</id>
     <content type="html"><![CDATA[<p>A great and easy way to avoid the double-bounce issue and prevent getting duplicate entries etc is to use the <a href="http://demos.telerik.com/aspnet-ajax/button/examples/singleclick/defaultcs.aspx">SingleClick</a> property of the RadButton.</p>
 
@@ -51,7 +107,7 @@
   <entry>
     <title type="html"><![CDATA[A Blog Is Reborn]]></title>
     <link href="http://www.nyami.uk/blog/2016/07/09/a-blog-is-reborn/"/>
-    <updated>2016-07-09T21:08:33+01:00</updated>
+    <updated>2016-07-09T20:08:33+00:00</updated>
     <id>http://www.nyami.uk/blog/2016/07/09/a-blog-is-reborn</id>
     <content type="html"><![CDATA[<p>Ok, I started off with the best intention of blogging more regularly but 18 months between blog posts was not quite the cadence I was aiming for! Shortly after setting up the blog I rebuild my machine and completely failed in setting up Octopress, following my own steps in [&ldquo;A Blog Is Born&rdquo;] just wasn’t working, I was encountering more problems than I knew how to fix I think because most of the tools weren’t playing nicely with each other on Windows so I gave up in a huff until an easy solution came along.</p>
 
