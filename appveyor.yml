@@ -16,7 +16,9 @@ init:
 clone_folder: C:\projects\nyami-github-io
 
 # environment variables
-# environment:
+environment:
+  access_token:
+    secure: 7a8U84UtyTi2/zk6aRcx0MqRcTx55u9q0A16UqsmijNXVQJ7EAAyQeKiFc4CUEUg
 
 # Branches to build
 branches:
@@ -34,7 +36,12 @@ install:
   - set PATH=C:\Ruby23\bin;%PATH%
 
 build_script:
-  # - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:GithubPassword):x-oauth-basic@github.com`n"
+
+  - git config --global credential.helper store
+  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
+  - git config --global user.email "nyami@hotmail.com"
+  - git config --global user.name "Douglas Cameron"
+
   - cmd: gem install bundler
   - cmd: bundle install
   - cmd: if not exist _deploy (git clone https://github.com/nyami/nyami.github.io.git _deploy)
