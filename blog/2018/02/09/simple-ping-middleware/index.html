@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Creating a Self-Signed Certificate for Identity Provider - Nyami&#8217;s Blog</title>
+  <title>Simple Ping Middleware - Nyami&#8217;s Blog</title>
   <meta name="author" content="Douglas Cameron">
 
   
-  <meta name="description" content="I’d recently had to create a self-signed certificate for use in IdentityProvider4 and was coming up against problems when using the default options &hellip;">
+  <meta name="description" content="If you find yourself needing to create a simple ping endpoint often used by load balancers as a quick check to see if traffic can be directed to your &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.nyami.uk/blog/2017/11/18/creating-a-self-signed-certificate-for-identity-provider">
+  <link rel="canonical" href="http://www.nyami.uk/blog/2018/02/09/simple-ping-middleware">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Nyami's Blog" type="application/atom+xml">
@@ -81,7 +81,7 @@
   
   <header>
     
-      <h1 class="entry-title">Creating a Self-Signed Certificate for Identity Provider</h1>
+      <h1 class="entry-title">Simple Ping Middleware</h1>
     
     
       <p class="meta">
@@ -90,7 +90,7 @@
 
 
 
-<time class='entry-date' datetime='2017-11-18T09:54:16+00:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>9:54 am</span></time>
+<time class='entry-date' datetime='2018-02-09T16:18:39+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>4:18 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://www.nyami.uk">Comments</a>
@@ -100,54 +100,20 @@
   </header>
 
 
-<div class="entry-content"><p>I’d recently had to create a self-signed certificate for use in IdentityProvider4 and was coming up against problems when using the default options with New-SelfSignedCertificate PS module.</p>
-
-<p>Identity Server was throwing &ldquo;CryptographicException: Invalid provider type specified&rdquo; and I had ensured the user account had access so it should have been all good. After a little bit of digging it turned out the private keys were not accessible from .NET. David Christiansen’s <a href="http://blog.davidchristiansen.com/2016/05/521/">blog post</a> helped me track down the issue but with a little more research I ended up with the following PowerShell to create a working certificate avoiding additional steps I didnt understand ;).</p>
+<div class="entry-content"><p>If you find yourself needing to create a simple ping endpoint often used by load balancers as a quick check to see if traffic can be directed to your site, rather than complicating the simple and creating an MVC controller etc consider simple middleware.</p>
 
 <!--more-->
 
 
-
+<p>The ASP.NET Core request pipeline consists of a sequence of request delegates, these delegates are configured using <a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.RunExtensions?view=aspnetcore-2.0">Run</a>, <a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.MapExtensions?view=aspnetcore-2.0">Map</a> and <a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.UseExtensions?view=aspnetcore-2.0">Use</a>, and for our simple ping endpoint Map is a perfect fit. Map will create a branch in the pipeline allowing you to break out of the normal flow which could have the advantage as it can keep this as lightweight as you need. The following can be used to return a 200 response to indicate our site should be good to go, if you need to add some health checks or additional logic you could create more complex middleware.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$idSrvCertificate = New-SelfSignedCertificate `
-</span><span class='line'>    -Subject "CN=MyIdentityProviderCert" `
-</span><span class='line'>    -FriendlyName "Identity Server Token Signing" `
-</span><span class='line'>    -CertStoreLocation "cert:LocalMachine\My" `
-</span><span class='line'>    -KeyAlgorithm RSA `
-</span><span class='line'>    -KeySpec Signature `
-</span><span class='line'>    -KeyLength 2048 `
-</span><span class='line'>    -KeyUsage DigitalSignature, KeyEncipherment, DataEncipherment, CertSign `
-</span><span class='line'>    -NotBefore (Get-Date) `
-</span><span class='line'>    -NotAfter (Get-Date).AddYears(5);
-</span><span class='line'>
-</span><span class='line'>$username = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name;
-</span><span class='line'>
-</span><span class='line'>$keyname = (((Get-ChildItem cert:\LocalMachine\my | Where-Object {$_.thumbprint -like $idSrvCertificate.ThumbPrint}).PrivateKey).CspKeyContainerInfo).UniqueKeyContainerName;
-</span><span class='line'>
-</span><span class='line'>$keypath = $env:ProgramData + "\Microsoft\Crypto\RSA\MachineKeys\";
-</span><span class='line'>$fullpath = $keypath + $keyname;
-</span><span class='line'>icacls $fullpath /grant $username`:RX;</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>app.Map("/ping",
+</span><span class='line'>  ping => ping.Run(async conext => await conext.Response.WriteAsync("ok")));</span></code></pre></td></tr></table></div></figure>
 
 
-<p> In addition to creating the certificate it will also ensure the current user has read access to the private keys avoiding the need to run VS elevated when developing, this last part could obviously be extracted and reused for your application pool if running Identity Server in IIS.</p>
+<p>For more information on Middleware check out <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?tabs=aspnetcore2x#writing-middleware">ASP.NET Core Middleware</a></p>
 </div>
 
 
@@ -163,12 +129,12 @@
 
 
 
-<time class='entry-date' datetime='2017-11-18T09:54:16+00:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>9:54 am</span></time>
+<time class='entry-date' datetime='2018-02-09T16:18:39+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>4:18 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/howto/'>howto</a>, <a class='category' href='/blog/categories/identity-provider/'>identity provider</a>, <a class='category' href='/blog/categories/powershell/'>powershell</a>, <a class='category' href='/blog/categories/tips/'>tips</a>
+    <a class='category' href='/blog/categories/asp-dot-net/'>asp.net</a>, <a class='category' href='/blog/categories/dotnet-core/'>dotnet core</a>, <a class='category' href='/blog/categories/howto/'>howto</a>, <a class='category' href='/blog/categories/middleware/'>middleware</a>, <a class='category' href='/blog/categories/tips/'>tips</a>
   
 </span>
 
@@ -177,7 +143,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.nyami.uk/blog/2017/11/18/creating-a-self-signed-certificate-for-identity-provider/" data-via="nyami" data-counturl="http://www.nyami.uk/blog/2017/11/18/creating-a-self-signed-certificate-for-identity-provider/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.nyami.uk/blog/2018/02/09/simple-ping-middleware/" data-via="nyami" data-counturl="http://www.nyami.uk/blog/2018/02/09/simple-ping-middleware/" >Tweet</a>
   
   
   
@@ -186,10 +152,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2016/10/06/bash-i-forgot-sudo/" title="Previous Post: Bash - I forgot sudo">&laquo; Bash - I forgot sudo</a>
+        <a class="basic-alignment left" href="/blog/2017/11/18/creating-a-self-signed-certificate-for-identity-provider/" title="Previous Post: Creating a Self-Signed Certificate for Identity Provider">&laquo; Creating a Self-Signed Certificate for Identity Provider</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2018/02/09/simple-ping-middleware/" title="Next Post: Simple ping Middleware">Simple ping Middleware &raquo;</a>
       
     </p>
   </footer>
@@ -255,8 +219,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.nyami.uk/blog/2017/11/18/creating-a-self-signed-certificate-for-identity-provider/';
-        var disqus_url = 'http://www.nyami.uk/blog/2017/11/18/creating-a-self-signed-certificate-for-identity-provider/';
+        var disqus_identifier = 'http://www.nyami.uk/blog/2018/02/09/simple-ping-middleware/';
+        var disqus_url = 'http://www.nyami.uk/blog/2018/02/09/simple-ping-middleware/';
         var disqus_script = 'embed.js';
       
     (function () {

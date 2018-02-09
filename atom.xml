@@ -4,7 +4,7 @@
   <title><![CDATA[Nyami's Blog]]></title>
   <link href="http://www.nyami.uk/atom.xml" rel="self"/>
   <link href="http://www.nyami.uk/"/>
-  <updated>2017-11-30T22:07:12+00:00</updated>
+  <updated>2018-02-09T17:08:48+00:00</updated>
   <id>http://www.nyami.uk/</id>
   <author>
     <name><![CDATA[Douglas Cameron]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Simple Ping Middleware]]></title>
+    <link href="http://www.nyami.uk/blog/2018/02/09/simple-ping-middleware/"/>
+    <updated>2018-02-09T16:18:39+00:00</updated>
+    <id>http://www.nyami.uk/blog/2018/02/09/simple-ping-middleware</id>
+    <content type="html"><![CDATA[<p>If you find yourself needing to create a simple ping endpoint often used by load balancers as a quick check to see if traffic can be directed to your site, rather than complicating the simple and creating an MVC controller etc consider simple middleware.</p>
+
+<!--more-->
+
+
+<p>The ASP.NET Core request pipeline consists of a sequence of request delegates, these delegates are configured using <a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.RunExtensions?view=aspnetcore-2.0">Run</a>, <a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.MapExtensions?view=aspnetcore-2.0">Map</a> and <a href="https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.UseExtensions?view=aspnetcore-2.0">Use</a>, and for our simple ping endpoint Map is a perfect fit. Map will create a branch in the pipeline allowing you to break out of the normal flow which could have the advantage as it can keep this as lightweight as you need. The following can be used to return a 200 response to indicate our site should be good to go, if you need to add some health checks or additional logic you could create more complex middleware.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>app.Map("/ping",
+</span><span class='line'>  ping => ping.Run(async conext => await conext.Response.WriteAsync("ok")));</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For more information on Middleware check out <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?tabs=aspnetcore2x#writing-middleware">ASP.NET Core Middleware</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Creating a Self-Signed Certificate for Identity Provider]]></title>
