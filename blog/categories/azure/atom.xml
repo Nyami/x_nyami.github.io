@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Azure | Nyami's Blog]]></title>
+  <link href="http://www.nyami.uk/blog/categories/azure/atom.xml" rel="self"/>
+  <link href="http://www.nyami.uk/"/>
+  <updated>2018-04-10T21:03:17+00:00</updated>
+  <id>http://www.nyami.uk/</id>
+  <author>
+    <name><![CDATA[Douglas Cameron]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[RGUHack 2018]]></title>
+    <link href="http://www.nyami.uk/blog/2018/04/10/rguhack-2018/"/>
+    <updated>2018-04-10T18:21:49+00:00</updated>
+    <id>http://www.nyami.uk/blog/2018/04/10/rguhack-2018</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ll be helping out at <a href="https://rguhack.uk">RGUHack</a> this coming weekend so I thought I&rsquo;d pull together a few links from <a href="https://docs.microsoft.com/en-gb/azure/index#pivot=products&amp;panel=all">some of the Azure services</a> available which might help the students build something awesome a little quicker. Hopefully the students have taken advantage of Github&rsquo;s <a href="https://education.github.com/pack">Student Developer Pack</a> to pick up some free Azure credit, but if they haven&rsquo;t, its easy to get started for free at <a href="https://azure.microsoft.com/en-us/free/">https://azure.microsoft.com/en-us/free/</a></p>
+
+<!--more-->
+
+
+<h2>Hosting</h2>
+
+<p><a href="https://docs.microsoft.com/azure/app-service/">Azure Web Apps</a> will let you host your web application without having to manage infrastructure and you can be live in minuets. As you might expect Azure Web supports web applications created using <a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-dotnet-framework">.NET</a> (including <a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-dotnet">Core</a>) and <a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-html">Static HTML</a> but it also supports <a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-php">PHP</a>, <a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-nodejs">Node.js</a>, <a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-python">Python</a> and <a href="https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-java">Java</a>.</p>
+
+<h2>Compute</h2>
+
+<p>One of the great features of Azure are <a href="https://docs.microsoft.com/en-gb/azure/azure-functions/">Azure Functions</a>, these allow you run your code on demand without having to consider the infrastructure, coupled with <a href="https://docs.microsoft.com/en-us/azure/logic-apps/">Logic Apps</a> Azure Functions can help build powerful workflows to solve many problems.</p>
+
+<p>If you need a little more power or require to be a little closer to the actual OS you can spin up a virtual machine or two. Options include various flavours of <a href="https://docs.microsoft.com/en-gb/azure/virtual-machines/linux/tutorial-create-vmss">Linux</a> and of course <a href="https://docs.microsoft.com/en-gb/azure/virtual-machines/windows/">Windows</a>, alternatively you could create and use <a href="https://docs.microsoft.com/en-gb/azure/container-instances/">Containers</a> to get something up and running.</p>
+
+<h2>Storage</h2>
+
+<p>There are <a href="https://docs.microsoft.com/en-us/azure/#pivot=products&amp;panel=storage">lots of solutions</a> for storing data in Azure, most commonly used are <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction#blob-storage">Blob</a> and <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction#azure-files">File</a> storage, <a href="https://docs.microsoft.com/en-us/azure/cosmos-db/introduction">Cosmos DB</a>, <a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-technical-overview">SQL</a> and <a href="https://docs.microsoft.com/en-us/azure/redis-cache/">Redis Cache</a>.</p>
+
+<h2>Cognitive Services</h2>
+
+<p>This is where things get interesting, the smart people at Microsoft have created a huge range of services that I have no doubt will help accelerate just about any idea at a Hackathon!</p>
+
+<h3>Text</h3>
+
+<p>The internet is full of text, be it tweets, Facebook posts, news articles, emails, or much more. Azure have a range of services that can help analyze text content, so if any of the challenges call for some text analysis like detecting fake news, one of these features are going to make things a whole lot easier! <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/bing-spell-check/proof-text">Spell check</a>; <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis">Sentiment Analysis</a>; <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-keyword-extraction">Key Phrase Extraction</a>; <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection">Language Detection</a>; <a href="https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/">Text Translate Services</a>;</p>
+
+<h3>Images</h3>
+
+<p>Cameras are just about everywhere, web cams, phones, drones, dash cams and even door bells! If any of the challenges require you analyse the images from any of those devices Cognitive Services has a series of APIs and tools to help. You can <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/emotion/home">Detect Emotions</a>, <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/">Recognise Faces</a>, <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/Custom-Vision-Service/home">Create a Custom Image Classifier</a>, <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/content-moderator/overview">Moderate Content</a>,  <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#optical-character-recognition-ocr-with-computer-vision-api-using-ca-nameocr-a">Extract Text from images</a>, <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#GetThumbnail">Generate Image Thumbnails</a>, or even <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#analyze-an-image-with-computer-vision-api-using-c-a-nameanalyzeimage-a">Extract Visual Features</a>.</p>
+
+<h3>Speech</h3>
+
+<p>Microsoft Azure provides <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speaker-recognition/home">Speaker Recognition</a>, <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/Speech/Home#speech-to-text-speech-recognition">Speech to Text</a>, <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/Speech/Home#text-to-speech-speech-synthesis">Text to Speech</a> and <a href="https://azure.microsoft.com/en-us/services/cognitive-services/translator-speech-api/">Translation to and from 10 languages</a>.</p>
+
+<h3>Video</h3>
+
+<p>You are not limited to analysing images or speech, you can analyse video as well. Cognitive Services includes <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/video-indexer/video-indexer-overview">Vision APIs for videos</a>. With these APIs you can perform face detection and tracking, motion detection, image stabilisation and video thumbnail generation. It&rsquo;s also possible to use the <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/video-indexer/video-indexer-overview">Video Indexer</a> to get an audio transcript, track faces, map and understand which speaker spoke which words and when, determine when a scene changes and a whole lot more!</p>
+]]></content>
+  </entry>
+  
+</feed>
