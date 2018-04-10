@@ -1,0 +1,45 @@
+---
+layout: post
+title: "RGUHack 2018"
+date: 2018-04-10 19:21:49 +0100
+comments: true
+categories: [Azure, RGUHack]
+---
+
+I'll be helping out at [RGUHack](https://rguhack.uk) this coming weekend so I thought I'd pull together a few links from [some of the Azure services](https://docs.microsoft.com/en-gb/azure/index#pivot=products&panel=all) available which might help the students build something awesome a little quicker. Hopefully the students have taken advantage of Github's [Student Developer Pack](https://education.github.com/pack) to pick up some free Azure credit, but if they haven't, its easy to get started for free at https://azure.microsoft.com/en-us/free/
+
+<!--more-->
+
+## Hosting ##
+
+[Azure Web Apps](https://docs.microsoft.com/azure/app-service/) will let you host your web application without having to manage infrastructure and you can be live in minuets. As you might expect Azure Web supports web applications created using [.NET](https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-dotnet-framework) (including [Core](https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-dotnet)) and [Static HTML](https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-html) but it also supports [PHP](https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-php), [Node.js](https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-nodejs), [Python](https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-python) and [Java](https://docs.microsoft.com/en-gb/azure/app-service/app-service-web-get-started-java).
+
+## Compute ##
+
+One of the great features of Azure are [Azure Functions](https://docs.microsoft.com/en-gb/azure/azure-functions/), these allow you run your code on demand without having to consider the infrastructure, coupled with [Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/) Azure Functions can help build powerful workflows to solve many problems.
+
+If you need a little more power or require to be a little closer to the actual OS you can spin up a virtual machine or two. Options include various flavours of [Linux](https://docs.microsoft.com/en-gb/azure/virtual-machines/linux/tutorial-create-vmss) and of course [Windows](https://docs.microsoft.com/en-gb/azure/virtual-machines/windows/), alternatively you could create and use [Containers](https://docs.microsoft.com/en-gb/azure/container-instances/) to get something up and running.
+
+## Storage ##
+
+There are [lots of solutions](https://docs.microsoft.com/en-us/azure/#pivot=products&panel=storage) for storing data in Azure, most commonly used are [Blob](https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction#blob-storage) and [File](https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction#azure-files) storage, [Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction), [SQL](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-technical-overview) and [Redis Cache](https://docs.microsoft.com/en-us/azure/redis-cache/).
+
+## Cognitive Services ##
+
+This is where things get interesting, the smart people at Microsoft have created a huge range of services that I have no doubt will help accelerate just about any idea at a Hackathon!
+
+### Text ###
+
+The internet is full of text, be it tweets, Facebook posts, news articles, emails, or much more. Azure have a range of services that can help analyze text content, so if any of the challenges call for some text analysis like detecting fake news, one of these features are going to make things a whole lot easier! [Spell check](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-spell-check/proof-text); [Sentiment Analysis](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis); [Key Phrase Extraction](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-keyword-extraction); [Language Detection](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection); [Text Translate Services](https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/);
+
+### Images ###
+
+Cameras are just about everywhere, web cams, phones, drones, dash cams and even door bells! If any of the challenges require you analyse the images from any of those devices Cognitive Services has a series of APIs and tools to help. You can [Detect Emotions](https://docs.microsoft.com/en-us/azure/cognitive-services/emotion/home), [Recognise Faces](https://docs.microsoft.com/en-us/azure/cognitive-services/face/), [Create a Custom Image Classifier](https://docs.microsoft.com/en-us/azure/cognitive-services/Custom-Vision-Service/home), [Moderate Content](https://docs.microsoft.com/en-us/azure/cognitive-services/content-moderator/overview),  [Extract Text from images](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#optical-character-recognition-ocr-with-computer-vision-api-using-ca-nameocr-a), [Generate Image Thumbnails](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#GetThumbnail), or even [Extract Visual Features](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#analyze-an-image-with-computer-vision-api-using-c-a-nameanalyzeimage-a).
+
+### Speech ###
+
+Microsoft Azure provides [Speaker Recognition](https://docs.microsoft.com/en-us/azure/cognitive-services/speaker-recognition/home), [Speech to Text](https://docs.microsoft.com/en-us/azure/cognitive-services/Speech/Home#speech-to-text-speech-recognition), [Text to Speech](https://docs.microsoft.com/en-us/azure/cognitive-services/Speech/Home#text-to-speech-speech-synthesis) and [Translation to and from 10 languages](https://azure.microsoft.com/en-us/services/cognitive-services/translator-speech-api/).
+
+### Video ###
+
+You are not limited to analysing images or speech, you can analyse video as well. Cognitive Services includes [Vision APIs for videos](https://docs.microsoft.com/en-us/azure/cognitive-services/video-indexer/video-indexer-overview). With these APIs you can perform face detection and tracking, motion detection, image stabilisation and video thumbnail generation. It's also possible to use the [Video Indexer](https://docs.microsoft.com/en-us/azure/cognitive-services/video-indexer/video-indexer-overview) to get an audio transcript, track faces, map and understand which speaker spoke which words and when, determine when a scene changes and a whole lot more!
