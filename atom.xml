@@ -4,7 +4,7 @@
   <title><![CDATA[Nyami's Blog]]></title>
   <link href="http://www.nyami.uk/atom.xml" rel="self"/>
   <link href="http://www.nyami.uk/"/>
-  <updated>2018-04-10T21:03:17+00:00</updated>
+  <updated>2018-08-17T09:17:30+00:00</updated>
   <id>http://www.nyami.uk/</id>
   <author>
     <name><![CDATA[Douglas Cameron]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Dotnet Sln Add]]></title>
+    <link href="http://www.nyami.uk/blog/2018/08/17/dotnet-sln-add/"/>
+    <updated>2018-08-17T09:02:03+00:00</updated>
+    <id>http://www.nyami.uk/blog/2018/08/17/dotnet-sln-add</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s been a while since I&rsquo;d created a number dotnet projects and supporting solution using the command line so I had to refer to the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet">documentation</a> to keep me right. As I had just created a number of projects adding each one to the solution is a little tedious so when I&rsquo;d spotted I could use <a href="https://en.wikipedia.org/wiki/Glob_(programming">globbing patterns</a>) I thought this would save time and a few key presses.</p>
+
+<!--more-->
+
+
+<p>However, when I ran <code>dotnet sln Foo.sln add **\*.csproj</code> I was presented with the error <code>Could not find project or directory **\*.csproj</code>. It turns out that blobbing is not actually supported by the CLI but actually a shell feature and PowerShell wasn&rsquo;t expanding the glob. Luckly as dotnet is cross platform and I have <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux</a> installed with all the dotnet goodness I could switch to <code>bash</code>, ensure globbing was enabled using <code>shopt -s globstar</code>, and then run <code>dotnet sln Foo.sln add **\*.csproj</code> to add all my new projects, job done&hellip;</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RGUHack 2018]]></title>
