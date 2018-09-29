@@ -4,7 +4,7 @@
   <title><![CDATA[Nyami's Blog]]></title>
   <link href="http://www.nyami.uk/atom.xml" rel="self"/>
   <link href="http://www.nyami.uk/"/>
-  <updated>2018-08-17T09:17:30+00:00</updated>
+  <updated>2018-09-29T08:36:43+00:00</updated>
   <id>http://www.nyami.uk/</id>
   <author>
     <name><![CDATA[Douglas Cameron]]></name>
@@ -23,7 +23,7 @@
 <!--more-->
 
 
-<p>However, when I ran <code>dotnet sln Foo.sln add **\*.csproj</code> I was presented with the error <code>Could not find project or directory **\*.csproj</code>. It turns out that blobbing is not actually supported by the CLI but actually a shell feature and PowerShell wasn&rsquo;t expanding the glob. Luckly as dotnet is cross platform and I have <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux</a> installed with all the dotnet goodness I could switch to <code>bash</code>, ensure globbing was enabled using <code>shopt -s globstar</code>, and then run <code>dotnet sln Foo.sln add **\*.csproj</code> to add all my new projects, job done&hellip;</p>
+<p>However, when I ran <code>dotnet sln Foo.sln add **/*.csproj</code> I was presented with the error <code>Could not find project or directory **/*.csproj</code>. It turns out that globbing is not actually supported by the CLI but actually a shell feature and PowerShell wasn&rsquo;t expanding the glob. Luckly as dotnet is cross platform and I have <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux</a> installed with all the dotnet goodness I could switch to <code>bash</code>, ensure globbing was enabled using <code>shopt -s globstar</code>, and then run <code>dotnet sln Foo.sln add **/*.csproj</code> to add all my new projects, job done&hellip;</p>
 ]]></content>
   </entry>
   

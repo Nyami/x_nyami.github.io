@@ -105,7 +105,7 @@
 <!--more-->
 
 
-<p>However, when I ran <code>dotnet sln Foo.sln add **\*.csproj</code> I was presented with the error <code>Could not find project or directory **\*.csproj</code>. It turns out that blobbing is not actually supported by the CLI but actually a shell feature and PowerShell wasn&rsquo;t expanding the glob. Luckly as dotnet is cross platform and I have <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux</a> installed with all the dotnet goodness I could switch to <code>bash</code>, ensure globbing was enabled using <code>shopt -s globstar</code>, and then run <code>dotnet sln Foo.sln add **\*.csproj</code> to add all my new projects, job done&hellip;</p>
+<p>However, when I ran <code>dotnet sln Foo.sln add **/*.csproj</code> I was presented with the error <code>Could not find project or directory **/*.csproj</code>. It turns out that globbing is not actually supported by the CLI but actually a shell feature and PowerShell wasn&rsquo;t expanding the glob. Luckly as dotnet is cross platform and I have <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux</a> installed with all the dotnet goodness I could switch to <code>bash</code>, ensure globbing was enabled using <code>shopt -s globstar</code>, and then run <code>dotnet sln Foo.sln add **/*.csproj</code> to add all my new projects, job done&hellip;</p>
 </div>
 
 
